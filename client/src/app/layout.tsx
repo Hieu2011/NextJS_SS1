@@ -27,12 +27,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies()
-  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
+  const cookieStore = await cookies();
+  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true";
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}
+        className={`${geistSans.variable} ${geistMono.variable} flex antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -42,14 +42,11 @@ export default async function RootLayout({
         >
           <SidebarProvider defaultOpen={defaultOpen}>
             <AppSidebar />
-            <main className= "w-full">
+            <main className="w-full">
               <Navbar />
-              <div className="px-4">
-                {children}
-              </div>
+              <div className="px-4">{children}</div>
             </main>
           </SidebarProvider>
-          
         </ThemeProvider>
       </body>
     </html>
