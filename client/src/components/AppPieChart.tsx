@@ -108,7 +108,7 @@ const AppPieChart = () => {
       <ChartContainer
         id={id}
         config={chartConfig}
-        className="mx-auto aspect-square w-full"
+        className="mx-auto aspect-square w-full max-w-md"
       >
         <PieChart>
           <ChartTooltip
