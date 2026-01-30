@@ -7,8 +7,8 @@ import {
   Plus,
   Projector,
   Search,
-  Settings,
-} from "lucide-react";
+  Settings
+} from 'lucide-react'
 import {
   Sidebar,
   SidebarContent,
@@ -23,63 +23,63 @@ import {
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubItem,
-  SidebarSeparator,
-} from "@/components/ui/sidebar";
-import Image from "next/image";
-import Link from "next/link";
+  SidebarSeparator
+} from '@/components/ui/sidebar'
+import Image from 'next/image'
+import Link from 'next/link'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu'
 import {
   Collapsible,
   CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+  CollapsibleTrigger
+} from '@/components/ui/collapsible'
 // Menu items.
 const items = [
   {
-    title: "Home",
-    url: "/home",
-    icon: Home,
+    title: 'Home',
+    url: '/home',
+    icon: Home
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
+    title: 'Inbox',
+    url: '#',
+    icon: Inbox
   },
   {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
+    title: 'Calendar',
+    url: '#',
+    icon: Calendar
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
+    title: 'Search',
+    url: '#',
+    icon: Search
   },
   {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-];
+    title: 'Settings',
+    url: '#',
+    icon: Settings
+  }
+]
 const AppSidebar = () => {
   return (
-    <Sidebar collapsible="icon" side="left">
+    <Sidebar collapsible='icon' side='left'>
       <SidebarHeader>
-        <SidebarMenu className="py-4">
+        <SidebarMenu className='py-4'>
           <SidebarMenuItem>
-            <SidebarMenuButton size={"lg"} asChild>
-              <Link href="/">
+            <SidebarMenuButton size={'lg'} asChild>
+              <Link href='/'>
                 <Image
-                  src="/images/avatar_luffy.jpg"
-                  alt="HieuPro Logo"
-                  width="50"
-                  height="50"
-                  className="rounded-full" // Fully rounded
+                  src='/images/avatar_luffy.jpg'
+                  alt='HieuPro Logo'
+                  width='50'
+                  height='50'
+                  className='rounded-full' // Fully rounded
                 />
                 <span>Hieu Pro</span>
               </Link>
@@ -101,7 +101,7 @@ const AppSidebar = () => {
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
-                  {item.title === "Inbox" && (
+                  {item.title === 'Inbox' && (
                     <SidebarMenuBadge>24</SidebarMenuBadge>
                   )}
                 </SidebarMenuItem>
@@ -110,12 +110,12 @@ const AppSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
         {/* Collapsible */}
-        <Collapsible defaultOpen className="group/collapsible">
+        <Collapsible defaultOpen className='group/collapsible'>
           <SidebarGroup>
             <SidebarGroupLabel asChild>
               <CollapsibleTrigger>
                 Collapsable Group
-                <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                <ChevronDown className='ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180' />
               </CollapsibleTrigger>
             </SidebarGroupLabel>
             <CollapsibleContent>
@@ -123,7 +123,7 @@ const AppSidebar = () => {
                 <SidebarMenu>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild>
-                      <Link href="#">
+                      <Link href='#'>
                         <Projector />
                         See All Projects
                       </Link>
@@ -131,7 +131,7 @@ const AppSidebar = () => {
                   </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild>
-                      <Link href="#">
+                      <Link href='#'>
                         <Plus />
                         Add Projects
                       </Link>
@@ -149,7 +149,7 @@ const AppSidebar = () => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="#">
+                  <Link href='#'>
                     <Projector />
                     See All Projects
                   </Link>
@@ -157,24 +157,24 @@ const AppSidebar = () => {
                 <SidebarMenuSub>
                   <SidebarMenuSubItem>
                     <SidebarMenuButton asChild>
-                      <Link href="#">Project A</Link>
+                      <Link href='#'>Project A</Link>
                     </SidebarMenuButton>
                   </SidebarMenuSubItem>
                   <SidebarMenuSubItem>
                     <SidebarMenuButton asChild>
-                      <Link href="#">Project B</Link>
+                      <Link href='#'>Project B</Link>
                     </SidebarMenuButton>
                   </SidebarMenuSubItem>
                   <SidebarMenuSubItem>
                     <SidebarMenuButton asChild>
-                      <Link href="#">Project C</Link>
+                      <Link href='#'>Project C</Link>
                     </SidebarMenuButton>
                   </SidebarMenuSubItem>
                 </SidebarMenuSub>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="#">
+                  <Link href='#'>
                     <Plus />
                     Add Projects
                   </Link>
@@ -189,21 +189,21 @@ const AppSidebar = () => {
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <SidebarMenuButton size={"lg"}>
+                <SidebarMenuButton size={'lg'}>
                   <Image
-                    src="/images/avatar_hieupc.jpg"
-                    alt="HieuPro Logo"
-                    width="30"
-                    height="30"
-                    className="rounded-sm" // Large rounded corners
-                  />{" "}
-                  HieuPC <ChevronUp className="ml-auto" />
+                    src='/images/avatar_hieupc.jpg'
+                    alt='HieuPro Logo'
+                    width='30'
+                    height='30'
+                    className='rounded-sm' // Large rounded corners
+                  />{' '}
+                  HieuPC <ChevronUp className='ml-auto' />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent align='end'>
                 <DropdownMenuItem>Account</DropdownMenuItem>
                 <DropdownMenuItem>Setting</DropdownMenuItem>
-                <DropdownMenuItem variant="destructive">
+                <DropdownMenuItem variant='destructive'>
                   Sign out
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -212,7 +212,7 @@ const AppSidebar = () => {
         </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
-  );
-};
+  )
+}
 
-export default AppSidebar;
+export default AppSidebar

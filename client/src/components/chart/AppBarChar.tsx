@@ -1,44 +1,44 @@
-"use client";
+'use client'
 import {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-  type ChartConfig,
-} from "@/components/ui/chart";
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+  type ChartConfig
+} from '@/components/ui/chart'
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 const chartConfig = {
   desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
+    label: 'Desktop',
+    color: 'var(--chart-1)'
   },
   mobile: {
-    label: "Mobile",
-    color: "var(--chart-4)",
-  },
-} satisfies ChartConfig;
+    label: 'Mobile',
+    color: 'var(--chart-4)'
+  }
+} satisfies ChartConfig
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-];
+  { month: 'January', desktop: 186, mobile: 80 },
+  { month: 'February', desktop: 305, mobile: 200 },
+  { month: 'March', desktop: 237, mobile: 120 },
+  { month: 'April', desktop: 73, mobile: 190 },
+  { month: 'May', desktop: 209, mobile: 130 },
+  { month: 'June', desktop: 214, mobile: 140 }
+]
 const AppBarChar = () => {
   return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-lg font-semibold">Monthly Active Users</h2>
-      <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+    <div className='flex flex-col gap-4'>
+      <h2 className='text-lg font-semibold'>Monthly Active Users</h2>
+      <ChartContainer config={chartConfig} className='min-h-[200px] w-full'>
         <BarChart accessibilityLayer data={chartData}>
           <CartesianGrid
-            stroke="var(--color-border)"
+            stroke='var(--color-border)'
             strokeWidth={1.5}
             vertical={false}
           />
           <XAxis
-            dataKey="month"
+            dataKey='month'
             tickLine={false}
             tickMargin={8}
             axisLine={false}
@@ -47,11 +47,11 @@ const AppBarChar = () => {
           <YAxis tickLine={false} tickMargin={10} axisLine={false} />
           <ChartTooltip content={<ChartTooltipContent />} />
           <ChartLegend content={<ChartLegendContent />} />
-          <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-          <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+          <Bar dataKey='desktop' fill='var(--color-desktop)' radius={4} />
+          <Bar dataKey='mobile' fill='var(--color-mobile)' radius={4} />
         </BarChart>
       </ChartContainer>
     </div>
-  );
-};
-export default AppBarChar;
+  )
+}
+export default AppBarChar

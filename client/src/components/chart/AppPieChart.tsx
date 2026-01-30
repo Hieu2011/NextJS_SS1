@@ -1,110 +1,110 @@
-"use client";
+'use client'
 
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
+  ChartTooltipContent
+} from '@/components/ui/chart'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import React from "react";
-import { Label, Pie, PieChart, Sector } from "recharts";
-import { PieSectorDataItem } from "recharts/types/polar/Pie";
+  SelectValue
+} from '@/components/ui/select'
+import React from 'react'
+import { Label, Pie, PieChart, Sector } from 'recharts'
+import { PieSectorDataItem } from 'recharts/types/polar/Pie'
 
 const desktopData = [
-  { month: "january", desktop: 186, fill: "var(--color-january)" },
-  { month: "february", desktop: 305, fill: "var(--color-february)" },
-  { month: "march", desktop: 237, fill: "var(--color-march)" },
-  { month: "april", desktop: 173, fill: "var(--color-april)" },
-  { month: "may", desktop: 209, fill: "var(--color-may)" },
-];
+  { month: 'january', desktop: 186, fill: 'var(--color-january)' },
+  { month: 'february', desktop: 305, fill: 'var(--color-february)' },
+  { month: 'march', desktop: 237, fill: 'var(--color-march)' },
+  { month: 'april', desktop: 173, fill: 'var(--color-april)' },
+  { month: 'may', desktop: 209, fill: 'var(--color-may)' }
+]
 const chartConfig = {
   visitors: {
-    label: "Visitors",
-    color: "var(--chart-5)", // Thêm dòng này
+    label: 'Visitors',
+    color: 'var(--chart-5)' // Thêm dòng này
   },
   desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)", // Thêm dòng này
+    label: 'Desktop',
+    color: 'var(--chart-1)' // Thêm dòng này
   },
   mobile: {
-    label: "Mobile",
-    color: "var(--chart-2)", // Thêm dòng này
+    label: 'Mobile',
+    color: 'var(--chart-2)' // Thêm dòng này
   },
   january: {
-    label: "January",
-    color: "var(--chart-1)",
+    label: 'January',
+    color: 'var(--chart-1)'
   },
   february: {
-    label: "February",
-    color: "var(--chart-2)",
+    label: 'February',
+    color: 'var(--chart-2)'
   },
   march: {
-    label: "March",
-    color: "var(--chart-3)",
+    label: 'March',
+    color: 'var(--chart-3)'
   },
   april: {
-    label: "April",
-    color: "var(--chart-4)",
+    label: 'April',
+    color: 'var(--chart-4)'
   },
   may: {
-    label: "May",
-    color: "var(--chart-5)",
-  },
-} satisfies ChartConfig;
+    label: 'May',
+    color: 'var(--chart-5)'
+  }
+} satisfies ChartConfig
 
 const AppPieChart = () => {
-  const id = "pie-interactive";
-  const [activeMonth, setActiveMonth] = React.useState(desktopData[0].month);
+  const id = 'pie-interactive'
+  const [activeMonth, setActiveMonth] = React.useState(desktopData[0].month)
   const activeIndex = React.useMemo(
     () => desktopData.findIndex((item) => item.month === activeMonth),
-    [activeMonth],
-  );
+    [activeMonth]
+  )
   const totalVisitors = React.useMemo(() => {
-    return desktopData.reduce((acc, curr) => acc + curr.desktop, 0);
-  }, []);
-  const months = React.useMemo(() => desktopData.map((item) => item.month), []);
-  console.log("months", months);
+    return desktopData.reduce((acc, curr) => acc + curr.desktop, 0)
+  }, [])
+  const months = React.useMemo(() => desktopData.map((item) => item.month), [])
+  console.log('months', months)
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <div className="col-span-1 flex items-center justify-between gap-2 md:col-span-2">
-        <h2 className="text-lg font-semibold">Pie Chart - Interactive</h2>
+    <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
+      <div className='col-span-1 flex items-center justify-between gap-2 md:col-span-2'>
+        <h2 className='text-lg font-semibold'>Pie Chart - Interactive</h2>
         <Select value={activeMonth} onValueChange={setActiveMonth}>
           <SelectTrigger
-            className="ml-auto h-7 w-[130px] rounded-lg pl-2.5"
-            aria-label="Select a value"
+            className='ml-auto h-7 w-[130px] rounded-lg pl-2.5'
+            aria-label='Select a value'
           >
-            <SelectValue placeholder="Select month" />
+            <SelectValue placeholder='Select month' />
           </SelectTrigger>
-          <SelectContent align="end" className="rounded-xl">
+          <SelectContent align='end' className='rounded-xl'>
             {months.map((key) => {
-              const config = chartConfig[key as keyof typeof chartConfig];
+              const config = chartConfig[key as keyof typeof chartConfig]
               if (!config) {
-                return null;
+                return null
               }
               return (
                 <SelectItem
                   key={key}
                   value={key}
-                  className="rounded-lg [&_span]:flex"
+                  className='rounded-lg [&_span]:flex'
                 >
-                  <div className="flex items-center gap-2 text-xs">
+                  <div className='flex items-center gap-2 text-xs'>
                     <span
-                      className="flex h-3 w-3 shrink-0 rounded-xs"
+                      className='flex h-3 w-3 shrink-0 rounded-xs'
                       style={{
-                        backgroundColor: `${config?.color}`,
+                        backgroundColor: `${config?.color}`
                       }}
                     />
                     {config?.label}
                   </div>
                 </SelectItem>
-              );
+              )
             })}
           </SelectContent>
         </Select>
@@ -112,7 +112,7 @@ const AppPieChart = () => {
       <ChartContainer
         id={id}
         config={chartConfig}
-        className="mx-auto aspect-square w-full max-w-md"
+        className='mx-auto aspect-square w-full max-w-md'
       >
         <PieChart>
           <ChartTooltip
@@ -121,8 +121,8 @@ const AppPieChart = () => {
           />
           <Pie
             data={desktopData}
-            dataKey="desktop"
-            nameKey="month"
+            dataKey='desktop'
+            nameKey='month'
             innerRadius={60}
             strokeWidth={5}
             activeIndex={activeIndex}
@@ -139,30 +139,30 @@ const AppPieChart = () => {
           >
             <Label
               content={({ viewBox }) => {
-                if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
                   return (
                     <text
                       x={viewBox.cx}
                       y={viewBox.cy}
-                      textAnchor="middle"
-                      dominantBaseline="middle"
+                      textAnchor='middle'
+                      dominantBaseline='middle'
                     >
                       <tspan
                         x={viewBox.cx}
                         y={viewBox.cy}
-                        className="fill-foreground text-3xl font-bold"
+                        className='fill-foreground text-3xl font-bold'
                       >
                         {desktopData[activeIndex].desktop.toLocaleString()}
                       </tspan>
                       <tspan
                         x={viewBox.cx}
                         y={(viewBox.cy || 0) + 24}
-                        className="fill-muted-foreground"
+                        className='fill-muted-foreground'
                       >
                         Visitors
                       </tspan>
                     </text>
-                  );
+                  )
                 }
               }}
             />
@@ -171,7 +171,7 @@ const AppPieChart = () => {
       </ChartContainer>
       <ChartContainer
         config={chartConfig}
-        className="mx-auto aspect-square w-full max-w-md"
+        className='mx-auto aspect-square w-full max-w-md'
       >
         <PieChart>
           <ChartTooltip
@@ -180,37 +180,37 @@ const AppPieChart = () => {
           />
           <Pie
             data={desktopData}
-            dataKey="desktop"
-            nameKey="month"
+            dataKey='desktop'
+            nameKey='month'
             innerRadius={60}
             strokeWidth={5}
           >
             <Label
               content={({ viewBox }) => {
-                if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
                   return (
                     <text
                       x={viewBox.cx}
                       y={viewBox.cy}
-                      textAnchor="middle"
-                      dominantBaseline="middle"
+                      textAnchor='middle'
+                      dominantBaseline='middle'
                     >
                       <tspan
                         x={viewBox.cx}
                         y={viewBox.cy}
-                        className="fill-foreground text-3xl font-bold"
+                        className='fill-foreground text-3xl font-bold'
                       >
                         {totalVisitors.toLocaleString()}
                       </tspan>
                       <tspan
                         x={viewBox.cx}
                         y={(viewBox.cy || 0) + 24}
-                        className="fill-muted-foreground"
+                        className='fill-muted-foreground'
                       >
                         Visitors
                       </tspan>
                     </text>
-                  );
+                  )
                 }
               }}
             />
@@ -218,7 +218,7 @@ const AppPieChart = () => {
         </PieChart>
       </ChartContainer>
     </div>
-  );
-};
+  )
+}
 
-export default AppPieChart;
+export default AppPieChart
