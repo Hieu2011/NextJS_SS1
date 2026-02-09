@@ -30,14 +30,14 @@ export default async function RootLayout({
   const cookieStore = await cookies()
   const defaultOpen = cookieStore.get('sidebar_state')?.value === 'true'
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
-          enableSystem
           disableTransitionOnChange
         >
           <SidebarProvider defaultOpen={defaultOpen}>
