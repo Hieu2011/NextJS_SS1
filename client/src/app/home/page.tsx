@@ -1,4 +1,3 @@
-import { MenuV2 } from '@/components/MenuV2'
 import { NavigationMenuDemo } from '@/components/NavigationMenuDemo'
 
 const HomePage = () => {
