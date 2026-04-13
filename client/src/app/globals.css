@@ -3,6 +3,56 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Progress bar animation dùng trong Hero carousel */
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Ken Burns — zoom chậm trên ảnh nền */
+@keyframes kenburns {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.08) translate(-1.5%, -1%);
+  }
+}
+
+/* Nội dung slide — trượt lên + fade in */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Container: canh giữa + padding responsive */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  width: 100%;
+  @media (width >= 640px) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 1024px) {
+    padding-inline: 2rem;
+    max-width: 1280px;
+  }
+  @media (width >= 1280px) {
+    padding-inline: 2.5rem;
+    max-width: 1400px;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

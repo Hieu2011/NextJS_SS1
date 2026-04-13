@@ -1,11 +1,8 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
-import AppSidebar from '@/components/AppSidebar'
-import Navbar from '@/components/Navbar'
 import { ThemeProvider } from '@/components/providers/theme-provider'
-import { SidebarProvider } from '@/components/ui/sidebar'
-import { cookies } from 'next/headers'
+import { Toaster } from '@/components/ui/sonner'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -27,12 +24,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const cookieStore = await cookies()
-  const defaultOpen = cookieStore.get('sidebar_state')?.value === 'true'
   return (
     <html lang='en' suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -40,13 +35,8 @@ export default async function RootLayout({
           defaultTheme='system'
           disableTransitionOnChange
         >
-          <SidebarProvider defaultOpen={defaultOpen}>
-            <AppSidebar />
-            <main className='w-full'>
-              <Navbar />
-              <div className='px-4'>{children}</div>
-            </main>
-          </SidebarProvider>
+          {children}
+          <Toaster position='bottom-right' richColors closeButton />
         </ThemeProvider>
       </body>
     </html>
